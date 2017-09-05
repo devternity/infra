@@ -385,3 +385,12 @@ resource "aws_api_gateway_usage_plan_key" "main" {
   key_type      = "API_KEY"
   usage_plan_id = "${aws_api_gateway_usage_plan.devternity_api_usage_plan.id}"
 }
+
+
+output "api_gw_key" {
+  value = "${aws_api_gateway_api_key.DevTernityAPIKey.value}"
+}
+
+output "api_gw_url" {
+  value = "${aws_api_gateway_deployment.DevTernityAPIDeployment.invoke_url}"
+}
