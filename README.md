@@ -1,2 +1,4 @@
-# infra
-DevTernity bot and dashboard infrastructure
+
+# DevTernity Infrastructure
+
+DevTernity bot and dashboard infrastructure.
