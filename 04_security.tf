@@ -176,7 +176,10 @@ resource "aws_iam_role_policy" "devternity_api_executor_policy" {
         "Action": [
             "lambda:InvokeFunction"
         ],
-        "Resource": ["${aws_lambda_function.devternity_ticket_generator.arn}"]
+        "Resource": [
+            "${aws_lambda_function.devternity_ticket_generator.arn}",
+            "${aws_lambda_function.devternity_card_generator.arn}"
+        ]
     }
   ]
 }
