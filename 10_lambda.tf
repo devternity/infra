@@ -19,6 +19,12 @@ resource "aws_lambda_function" "devternity_ticket_generator" {
   runtime                 = "java8"
   memory_size             = "1024"
   timeout                 = "300"
+  environment {
+    variables = {
+      HOME                = "/var/task"
+      JAVA_FONTS          = "/var/task/fonts"
+    }
+  }
 }
 
 resource "aws_lambda_alias" "devternity_ticket_generator_alias" {
@@ -38,7 +44,7 @@ resource "aws_lambda_permission" "devternity_ticket_generator_api_gatewaypermiss
 
 resource "aws_lambda_function" "devternity_card_generator" {
   s3_bucket               = "${aws_s3_bucket.devternity_code.bucket}"
-  s3_key                  = "ticket-generator.zip"
+  s3_key                  = "card-generator.zip"
   function_name           = "devternity_card_generator"
   description             = "DevTernity card generator"
   role                    = "${aws_iam_role.devternity_lambda_executor.arn}"
@@ -46,6 +52,12 @@ resource "aws_lambda_function" "devternity_card_generator" {
   runtime                 = "java8"
   memory_size             = "1024"
   timeout                 = "300"
+  environment {
+    variables = {
+      HOME                = "/var/task"
+      JAVA_FONTS          = "/var/task/fonts"
+    }
+  }
 }
 
 resource "aws_lambda_alias" "devternity_card_generator_alias" {
