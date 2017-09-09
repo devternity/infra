@@ -17,7 +17,7 @@ resource "aws_lambda_function" "devternity_ticket_generator" {
   role                    = "${aws_iam_role.devternity_lambda_executor.arn}"
   handler                 = "lv.latcraft.devternity.tickets.TicketGenerator::generate"
   runtime                 = "java8"
-  memory_size             = "1024"
+  memory_size             = "1536"
   timeout                 = "300"
   environment {
     variables = {
@@ -50,7 +50,7 @@ resource "aws_lambda_function" "devternity_card_generator" {
   role                    = "${aws_iam_role.devternity_lambda_executor.arn}"
   handler                 = "lv.latcraft.devternity.cards.CardGenerator::generate"
   runtime                 = "java8"
-  memory_size             = "1024"
+  memory_size             = "1536"
   timeout                 = "300"
   environment {
     variables = {
