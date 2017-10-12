@@ -1,6 +1,7 @@
 *.tfstate filter=crypt diff=crypt
 *.tfstate.backup filter=crypt diff=crypt
-*.key
-*.pub
-*.pem
-*.ppk
+*.key filter=crypt diff=crypt
+*.pub filter=crypt diff=crypt
+*.pem filter=crypt diff=crypt
+*.ppk filter=crypt diff=crypt
+*.tfvars filter=crypt diff=crypt 
