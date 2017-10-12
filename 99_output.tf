@@ -19,3 +19,10 @@ output "deployer_secret_key" {
   value = "${aws_iam_access_key.devternity_deployer_key.secret}"
 }
 
+output "internal_dashboard_ip" {
+  value = "${aws_lightsail_instance.devternity_internal_dashboard.public_ip_address}"
+}
+
+output "public_dashboard_ip" {
+  value = "${aws_lightsail_instance.devternity_public_dashboard.public_ip_address}"
+}
