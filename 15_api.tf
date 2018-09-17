@@ -22,7 +22,7 @@ resource "aws_api_gateway_api_key" "DevTernityAPIKey" {
 resource "aws_api_gateway_deployment" "DevTernityAPIDeployment" {
   rest_api_id             = "${aws_api_gateway_rest_api.DevTernityAPI.id}"
   stage_name              = "prod"
-  stage_description       = "${timestamp()}" // forces to 'create' a new deployment each run
+//  stage_description       = "${timestamp()}" // forces to 'create' a new deployment each run
 }
 
 resource "aws_api_gateway_usage_plan" "devternity_api_usage_plan" {

@@ -1,10 +1,4 @@
 
-provider "cloudflare" {
-  email = "${var.cloudflare_email}"
-  token = "${var.cloudflare_token}"
-  version = "0.1.0"
-}
-
 resource "cloudflare_record" "sales" {
   domain = "devternity.com"
   name   = "sales"
