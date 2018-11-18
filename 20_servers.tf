@@ -14,7 +14,8 @@ variable "provision_commands" {
     "sudo bash -c 'apt-get -y -qq update -o=Dpkg::Use-Pty=0'",
     "sudo bash -c 'apt-get -y -qq install -o=Dpkg::Use-Pty=0 docker-ce'",
     "sudo bash -c 'apt-get -y -qq install -o=Dpkg::Use-Pty=0 sqlite3 libsqlite3-dev ruby ruby-dev nodejs g++ bundler'",
-    "sudo bash -c 'gem install dashing'"
+    "sudo bash -c 'gem install smashing unf_ext'",
+    "sudo bash -c 'apt-get -y -qq install -o=Dpkg::Use-Pty=0 nginx'"
   ]
 }
 
