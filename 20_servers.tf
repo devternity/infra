@@ -40,7 +40,7 @@ resource "aws_lightsail_instance" "devternity_public_dashboard" {
   name              = "devternity_public_dashboard"
   availability_zone = "eu-west-1a"
   blueprint_id      = "ubuntu_16_04"
-  bundle_id         = "nano_1_0"
+  bundle_id         = "micro_1_0"
   key_pair_name     = "${aws_lightsail_key_pair.devternity_dashboard_key.name}"
   connection {
     host        = "${aws_lightsail_instance.devternity_public_dashboard.public_ip_address}"

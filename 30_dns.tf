@@ -10,7 +10,7 @@ resource "cloudflare_zone_settings_override" "devternity-com-settings" {
 
 resource "cloudflare_record" "sales" {
   domain = "devternity.com"
-  name   = "sales"
+  name   = "internal"
   value  = "${aws_lightsail_instance.devternity_internal_dashboard.public_ip_address}"
   type   = "A"
   ttl    = 120
