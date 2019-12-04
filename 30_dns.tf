@@ -3,7 +3,7 @@ resource "cloudflare_zone_settings_override" "devternity-com-settings" {
   settings {
     tls_1_3 = "on"
     automatic_https_rewrites = "on"
-    always_use_https="off"
+    always_use_https = "on"
     ssl = "flexible"
   }
 }
@@ -11,7 +11,7 @@ resource "cloudflare_zone_settings_override" "devternity-com-settings" {
 resource "cloudflare_record" "sales" {
   domain = "devternity.com"
   name   = "internal"
-  value  = "${aws_lightsail_instance.devternity_internal_dashboard.public_ip_address}"
+  value  = aws_lightsail_instance.devternity_internal_dashboard.public_ip_address
   type   = "A"
   ttl    = 120
 }
@@ -20,7 +20,7 @@ resource "cloudflare_record" "dashboard" {
   domain   = "devternity.com"
   name     = "dashboard"
   priority = 1
-  value    = "${aws_lightsail_instance.devternity_public_dashboard.public_ip_address}"
+  value    = aws_lightsail_instance.devternity_public_dashboard.public_ip_address
   type     = "A"
   ttl      = 120
 }

@@ -1,4 +1,3 @@
-
 variable "aws_region" {
   default = "eu-west-1"
 }
@@ -20,5 +19,5 @@ variable "cloudflare_token" {
 }
 
 data "aws_caller_identity" "current" {
-
 }
+

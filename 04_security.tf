@@ -1,14 +1,13 @@
-
 resource "aws_iam_user" "devternity_deployer" {
   name = "devternity_deployer"
 }
 
 resource "aws_iam_access_key" "devternity_deployer_key" {
-  user = "${aws_iam_user.devternity_deployer.name}"
+  user = aws_iam_user.devternity_deployer.name
 }
 
 resource "aws_iam_user_policy_attachment" "devternity_deployer_policy_attachment" {
-  user       = "${aws_iam_user.devternity_deployer.name}"
+  user       = aws_iam_user.devternity_deployer.name
   policy_arn = "arn:aws:iam::aws:policy/AWSLambdaFullAccess"
 }
 
@@ -17,12 +16,12 @@ resource "aws_iam_user" "devternity_s3_user" {
 }
 
 resource "aws_iam_access_key" "devternity_s3_user_key" {
-  user = "${aws_iam_user.devternity_s3_user.name}"
+  user = aws_iam_user.devternity_s3_user.name
 }
 
 resource "aws_iam_user_policy" "devternity_s3_user_policy" {
-  name = "devternity_s3_user_policy"
-  user = "${aws_iam_user.devternity_s3_user.name}"
+  name   = "devternity_s3_user_policy"
+  user   = aws_iam_user.devternity_s3_user.name
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -53,11 +52,12 @@ resource "aws_iam_user_policy" "devternity_s3_user_policy" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role" "devternity_lambda_executor" {
-  name                    = "devternity_lambda_executor"
-  assume_role_policy      = <<EOF
+  name               = "devternity_lambda_executor"
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -78,12 +78,13 @@ resource "aws_iam_role" "devternity_lambda_executor" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy" "devternity_lambda_executor_policy" {
-    name                  = "devternity_lambda_executor_policy"
-    role                  = "${aws_iam_role.devternity_lambda_executor.id}"
-    policy                = <<EOF
+  name   = "devternity_lambda_executor_policy"
+  role   = aws_iam_role.devternity_lambda_executor.id
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -124,11 +125,12 @@ resource "aws_iam_role_policy" "devternity_lambda_executor_policy" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role" "devternity_api_executor" {
-  name                    = "devternity_api_executor"
-  assume_role_policy      = <<EOF
+  name               = "devternity_api_executor"
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -149,11 +151,12 @@ resource "aws_iam_role" "devternity_api_executor" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy" "devternity_api_executor_policy" {
-  name = "devternity_api_executor_policy"
-  role = "${aws_iam_role.devternity_api_executor.id}"
+  name   = "devternity_api_executor_policy"
+  role   = aws_iam_role.devternity_api_executor.id
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -184,14 +187,15 @@ resource "aws_iam_role_policy" "devternity_api_executor_policy" {
   ]
 }
 EOF
+
 }
 
 resource "aws_api_gateway_account" "api_gateway" {
-  cloudwatch_role_arn = "${aws_iam_role.api_gateway_cloudwatch.arn}"
+  cloudwatch_role_arn = aws_iam_role.api_gateway_cloudwatch.arn
 }
 
 resource "aws_iam_role" "api_gateway_cloudwatch" {
-  name = "api_gateway_cloudwatch_global"
+  name               = "api_gateway_cloudwatch_global"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -206,11 +210,12 @@ resource "aws_iam_role" "api_gateway_cloudwatch" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy" "api_gateway_cloudwatch_policy" {
-  name = "default"
-  role = "${aws_iam_role.api_gateway_cloudwatch.id}"
+  name   = "default"
+  role   = aws_iam_role.api_gateway_cloudwatch.id
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -231,4 +236,6 @@ resource "aws_iam_role_policy" "api_gateway_cloudwatch_policy" {
   ]
 }
 EOF
+
 }
+
